@@ -6,12 +6,22 @@ import { TiTick } from "react-icons/ti";
 import { useAddItemContext } from "../../contexts/AddItemProvider";
 
 const Quests = () => {
-  const { items, setItems } = useAddItemContext();
+  const { items, setItems, coin, setCoin } = useAddItemContext();
   const [filtered, setFiltered] = useState([]);
 
   const deleteHandler = (index) => {
     const updatedItems = items.filter((item, i) => i !== index);
     setFiltered(updatedItems);
+    const deletedItem = items[index];
+    let newCoin = Number(coin);
+    if (deletedItem.diffValue === "Easy") {
+      newCoin += 100;
+    } else if (deletedItem.diffValue === "Medium") {
+      newCoin += 200;
+    } else if (deletedItem.diffValue === "Hard") {
+      newCoin += 300;
+    }
+    setCoin(newCoin);
   };
 
   useEffect(() => {
@@ -46,7 +56,7 @@ const Quests = () => {
               </h1>
             </div>
             <div className="flex items-center mr-10">
-              <img src={logoMoney} className="w-6 h-6" />
+              <img alt="" src={logoMoney} className="w-6 h-6" />
               <span className="text-sm text-yellow-400">
                 {item.diffValue === "Easy"
                   ? "+100"

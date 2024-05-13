@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaPlus } from "react-icons/fa";
 import Quests from "./Quests";
 import AddItem from "./AddItem";

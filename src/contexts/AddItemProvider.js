@@ -17,6 +17,7 @@ const AddItemProvider = ({ children }) => {
   const [savedData, setSavedData] = useState(null);
   const [menuActive, setMenuActive] = useState(false);
   const [items, setItems] = useState([]);
+  const [coin, setCoin] = useState("000");
 
   const diffHandler = (diffValue) => {
     setDiffValue(diffValue);
@@ -58,6 +59,8 @@ const AddItemProvider = ({ children }) => {
     setMenuActive,
     items,
     setItems,
+    coin,
+    setCoin,
   };
 
   return (

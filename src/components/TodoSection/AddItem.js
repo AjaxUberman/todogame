@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAddItemContext } from "../../contexts/AddItemProvider";
 import { AiFillAlert } from "react-icons/ai";
 import { FaClock } from "react-icons/fa";
@@ -21,14 +21,10 @@ const AddItem = () => {
     selectedTime,
     setSelectedTime,
     diffValue,
-    setDiffValue,
     difficultActive,
     setDifficultActive,
     diffHandler,
     saveHandler,
-    savedData,
-    menuActive,
-    setMenuActive,
   } = useAddItemContext();
 
   return (
