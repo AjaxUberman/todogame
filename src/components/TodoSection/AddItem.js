@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAddItemContext } from "../../contexts/AddItemProvider";
 import { AiFillAlert } from "react-icons/ai";
 import { FaClock } from "react-icons/fa";
@@ -27,6 +27,39 @@ const AddItem = () => {
     saveHandler,
   } = useAddItemContext();
 
+  /*  Fake API*/
+  const saveApiHandler = async () => {
+    console.log("saveApiHandler called");
+    const newPost = { quest, selectedIcon, selectedTime, diffValue };
+    try {
+      const response = await fetch("http://localhost:3001/todos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newPost),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Post ++:", data);
+    } catch (error) {
+      console.error("Error adding post:", error);
+    }
+  };
+
+  /* IconMap */
+  const iconMap = {
+    AiFillAlert: <AiFillAlert />,
+    FaBook: <FaBook />,
+    GiGymBag: <GiGymBag />,
+    FaNetworkWired: <FaNetworkWired />,
+    FaKeyboard: <FaKeyboard />,
+  };
+
   return (
     <div className="bg-white px-6 py-6 mx-6 h-48 flex flex-col justify-center gap-4 font-poetsen relative rounded-xl border border-gray-400 ">
       <div className="flex gap-4 items-center justify-center">
@@ -49,7 +82,7 @@ const AddItem = () => {
             {/* Icon */}
             <div className="border border-gray-400 p-4 rounded-full shadow-md relative">
               <div onClick={() => setIconActive(!iconActive)}>
-                {selectedIcon ? selectedIcon : <AiFillAlert />}
+                {iconMap[selectedIcon] || <AiFillAlert />}
               </div>
               {/* Icon Menu */}
               {iconActive ? (
@@ -58,7 +91,7 @@ const AddItem = () => {
                     <li
                       className="border border-gray-400 flex items-center justify-center w-10 h-10 rounded-md hover:text-green-400 hover:bg-yellow-200 hover:scale-105 transition duration-100 ease-in"
                       onClick={() => {
-                        setSelectedIcon(<AiFillAlert />);
+                        setSelectedIcon("AiFillAlert");
                         setIconActive(false);
                       }}
                     >
@@ -67,7 +100,7 @@ const AddItem = () => {
                     <li
                       className="border border-gray-400 flex items-center justify-center w-10 h-10 rounded-md hover:text-green-400 hover:bg-yellow-200 hover:scale-105 transition duration-100 ease-in"
                       onClick={() => {
-                        setSelectedIcon(<FaBook />);
+                        setSelectedIcon("FaBook");
                         setIconActive(false);
                       }}
                     >
@@ -76,7 +109,7 @@ const AddItem = () => {
                     <li
                       className="border border-gray-400 flex items-center justify-center w-10 h-10 rounded-md hover:text-green-400 hover:bg-yellow-200 hover:scale-105 transition duration-100 ease-in "
                       onClick={() => {
-                        setSelectedIcon(<GiGymBag />);
+                        setSelectedIcon("GiGymBag");
                         setIconActive(false);
                       }}
                     >
@@ -85,7 +118,7 @@ const AddItem = () => {
                     <li
                       className="border border-gray-400 flex items-center justify-center w-10 h-10 rounded-md hover:text-green-400 hover:bg-yellow-200 hover:scale-105 transition duration-100 ease-in "
                       onClick={() => {
-                        setSelectedIcon(<FaNetworkWired />);
+                        setSelectedIcon("FaNetworkWired");
                         setIconActive(false);
                       }}
                     >
@@ -94,7 +127,7 @@ const AddItem = () => {
                     <li
                       className="border border-gray-400 flex items-center justify-center w-10 h-10 rounded-md hover:text-green-400 hover:bg-yellow-200 hover:scale-105 transition duration-100 ease-in "
                       onClick={() => {
-                        setSelectedIcon(<FaKeyboard />);
+                        setSelectedIcon("FaKeyboard");
                         setIconActive(false);
                       }}
                     >
@@ -193,6 +226,7 @@ const AddItem = () => {
             className="bg-green-400 px-4 py-2 rounded-full text-white drop-shadow-xl shadow-md border-b border-gray-400 hover:bg-green-600 hover:scale-110 transition duration-100 ease-in hover:shadow-[5px_5px_rgba(0,_98,_90,_0.4)]"
             onClick={() => {
               saveHandler();
+              saveApiHandler();
             }}
             disabled={quest === ""}
           >

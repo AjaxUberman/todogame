@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { FaBook } from "react-icons/fa6";
 
 const AddItemContext = createContext();
 
@@ -11,13 +12,14 @@ const AddItemProvider = ({ children }) => {
   const [diffValue, setDiffValue] = useState("Easy");
   const [quest, setQuest] = useState("");
   const [iconActive, setIconActive] = useState(false);
-  const [selectedIcon, setSelectedIcon] = useState(null);
+  const [selectedIcon, setSelectedIcon] = useState("FaBook");
   const [timeActive, setTimeActive] = useState(false);
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(50);
   const [savedData, setSavedData] = useState(null);
   const [menuActive, setMenuActive] = useState(false);
   const [items, setItems] = useState([]);
-  const [coin, setCoin] = useState("000");
+  const [coin, setCoin] = useState(0);
+  const [render, setRender] = useState(false);
 
   const diffHandler = (diffValue) => {
     setDiffValue(diffValue);
@@ -61,6 +63,8 @@ const AddItemProvider = ({ children }) => {
     setItems,
     coin,
     setCoin,
+    render,
+    setRender,
   };
 
   return (
