@@ -30,7 +30,9 @@ const Quests = () => {
   useEffect(() => {
     const apiHandler = async () => {
       try {
-        const response = await fetch("http://localhost:3001/todos");
+        const response = await fetch(
+          "https://todogameserver.onrender.com/todo"
+        );
         if (!response.ok) {
           throw new Error("Network error.");
         }
@@ -48,7 +50,7 @@ const Quests = () => {
     const itemDelete = datas[index];
     try {
       const response = await fetch(
-        `http://localhost:3001/todos/${itemDelete.id}`,
+        `https://todogameserver.onrender.com/todo/${itemDelete.id}`,
         {
           method: "DELETE",
         }

@@ -32,7 +32,7 @@ const AddItem = () => {
     console.log("saveApiHandler called");
     const newPost = { quest, selectedIcon, selectedTime, diffValue };
     try {
-      const response = await fetch("http://localhost:3001/todos", {
+      const response = await fetch("https://todogameserver.onrender.com/todo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
