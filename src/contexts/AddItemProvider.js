@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import { FaBook } from "react-icons/fa6";
 
 const AddItemContext = createContext();
 

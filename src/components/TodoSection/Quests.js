@@ -42,7 +42,10 @@ const Quests = () => {
         console.error("Error!!", error);
       }
     };
-    apiHandler();
+
+    const timer = setTimeout(() => {
+      apiHandler();
+    }, 600);
   }, [items, render]);
 
   /* DELETE HANDLER */
