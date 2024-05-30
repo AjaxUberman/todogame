@@ -24,9 +24,7 @@
 
    ```sh
    git clone https://github.com/AjaxUberman/todogame.git
-cd todogame
-npm install
-npm start
+
 
 ## Contributing
 
