@@ -1,5 +1,9 @@
 # TodoGame
 
+## Screenshots
+
+![Screenshot](https://github.com/AjaxUberman/todogame/assets/138936442/c0980e89-6678-4550-b625-da733b77c7f7)
+
 ## Features
 
 - **Task Management**: Add, edit, and delete tasks.
@@ -47,6 +51,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Hat tip to anyone whose code was used.
 - Inspiration from various Todo applications and gamification concepts.
 
-## Screenshots
 
-![Screenshot](https://github.com/AjaxUberman/todogame/assets/138936442/c0980e89-6678-4550-b625-da733b77c7f7)
